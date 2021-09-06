@@ -15,21 +15,21 @@ const cliente = new Cliente({
 cliente.connect()
 
 async function getTasks(){
-    try{
-
-        await cliente.query('select * from todolist')
-            .then((e)=>[
-                teste = (e.rows[0])
-        ])
-    }catch(err){
-        console.log(err)
+    try {
+        const result = await cliente.query('select * from todolist');
+        if(result){
+            return result.rows
+        }else{
+            return;
+        }
+    } catch (error) {
+        return;
     }
-    return teste
 }
 
 
 async function postTasks(fields){
-    let mensagem = ''
+    let resposta = ''
 
     const Query = {
         name: 'Post_tasks',
@@ -39,30 +39,30 @@ async function postTasks(fields){
             + ')values('
             + '$1,$2)',
         values: [
-            fields.titulo,
-            fields.mensagem,
+            fields.fields.titulo,
+            fields.fields.mensagem,
         ]
     }
 
     try{
         await cliente.query(Query)
             .then(()=>{
-                mensagem = 'gravado com sucesso'
+                resposta = 'gravado com sucesso'
             })
             
     }catch(err){
         console.log(err)
     }
-    return mensagem
+    return resposta
 }
  
-async function deleteTasks(fields){
+async function deleteTasks(id){
     
     let mensagem = ''
 
     const Query = {
         name: 'delete_tasks',
-        text: 'delete from todolist'
+        text: 'delete from todolist where id = $1', values: [id] 
     }
 
     try{
@@ -89,7 +89,7 @@ async function updateTasks(fields, id){
     try{
         await cliente.query(Query)
             .then(()=>{
-                mensagem = 'Dados apagados com sucesso'
+                mensagem = 'Dados alterados com sucesso'
             })
             
     }catch(err){
