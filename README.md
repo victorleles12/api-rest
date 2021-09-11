@@ -1,6 +1,6 @@
 # api-rest
-api rest usada para criação de um todoList
-esta api utiliza como banco de dados o PostgreSql
+Api rest utilizada no todoList.
+Esta api utiliza com banco de dados o PostgreSql
 
 1- para utilização deve-se criar o banco no schema public do postgres com nome de todolist,
 2- o banco deve ter 4 campos, id, titulo, mensagem, e data.
