@@ -46,5 +46,4 @@ app.get('/getdados', async (req, res) => {
       }
       });
 
-  app.listen(porta, () =>{
-    console.log(`servidor rodando na porta ${porta}`)})
+  app.listen(process.env.Port || porta, () =>{})
