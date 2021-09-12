@@ -1,1 +1,1 @@
-web: node rotas.js
+web: node server.js

@@ -5,8 +5,8 @@
   "main": "rotas.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --inspect rotas.js",
-    "start": "rotas.js"
+    "dev": "nodemon --inspect server.js",
+    "start": "server.js"
   },
   "keywords": [],
   "author": "",
