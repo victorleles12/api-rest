@@ -1,13 +1,13 @@
 const express = require('express')
 const app = express();
 const { getTasks, postTasks, deleteTasks, updateTasks } = require('./Dao/index')
-const porta = process.env.PORT || 5000;
+const porta = process.env.PORT || 3000;
 var cors = require('cors')
 app.use(express.json());
+app.use(express.urlencoded({ extended: true}))
 
 
 app.use(cors())
-
 
 app.get('/getdados', async (req, res) => {
   try{
