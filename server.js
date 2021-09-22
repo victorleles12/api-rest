@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express();
 const { getTasks, postTasks, deleteTasks, updateTasks } = require('./Dao/index')
-const porta = 8080
+const porta = process.env.PORT || 5000;
 var cors = require('cors')
 app.use(express.json());
 
