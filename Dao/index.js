@@ -39,8 +39,8 @@ async function postTasks(fields){
             + ')values('
             + '$1,$2)',
         values: [
-            fields.titulo,
-            fields.mensagem,
+            fields.fields.titulo,
+            fields.fields.mensagem,
         ]
     }
 
